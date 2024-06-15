@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="EN" />
+  </tags>
+  <strings>
+    
+    <!-- MCM -->
+    <string id="BetEx_00001" text="Enable Debug" />
+    <string id="BetEx_00002" text="Show debug Message" />
+    <string id="BetEx_00003" text="Betting Price" />
+    <string id="BetEx_00004" text="Betting buyout price" />
+    <string id="BetEx_00005" text="Max Bet" />
+    <string id="BetEx_00006" text="Max Betting Allowed (double if having Deep Pocket Perk)" />
+    <string id="BetEx_00007" text="Prize Pool Tax" />
+    <string id="BetEx_00008" text="Percentage of prize pool will be cut to this amount before split to betting winner" />
+    <string id="BetEx_00009" text="Settlement Prosperity to NPC Betting Ratio" />
+    <string id="BetEx_00010" text="Percentage of settlement prosperity will be converted as purchased bet from NPC. example : 5000 prosperity with 10% setting resulting in 500 total bet" />
+    <string id="BetEx_00011" text="Give Prize Tax to Settlement" />
+    <string id="BetEx_00012" text="Should tax from total prize pool be added to settlement gold?" />
+    <string id="BetEx_00013" text="Qualification Mode" />
+    <string id="BetEx_00014" text="Individual : if you have high score but your team lose, you still can go to next round" />
+    <string id="BetEx_00015" text="Simple Rounds" />
+    <string id="BetEx_00016" text="If true, round will divided by 16P(Participants)-4T(Teams), 8P-4T, 4P-4T, 2P-2T" />
+    <string id="BetEx_00017" text="Betting Mode" />
+    <string id="BetEx_00018" text="Betting Mode determine Betting Winner. NOT tournament winner. Mode selected each match will be random" />
+    <string id="BetEx_00019" text="Bonus For Ranged Kill" />
+    <string id="BetEx_00020" text="Bonus +10 score for ranged kill. Note that betting odds is calculated without considering NPC ranged kill" />
+    <string id="BetEx_00021" text="Minimum Ranged Kill Distance" />
+    <string id="BetEx_00022" text="Minimum distance for ranged kill to gain extra +10 score" />
+    <string id="BetEx_00023" text="Minimum Ranged Kill Distance (On Horse)" />
+    <string id="BetEx_00024" text="Minimum distance for ranged kill while on horse back to gain extra +10 score" />
+<!--    MCM GROUP -->
+    <string id="BetEx_00030" text="Debug" />
+    <string id="BetEx_00031" text="Betting Settings" />
+    <string id="BetEx_00032" text="Match" />
+    <string id="BetEx_00033" text="Mode" />
+    <string id="BetEx_00034" text="Scoring" />
+<!--    MCM DROPDOWN-->
+    <string id="BetEx_00040" text="Disabled" />
+    <string id="BetEx_00041" text="Only if Player Participate" />
+    <string id="BetEx_00042" text="Enabled" />
+    <string id="BetEx_00043" text="Individual" />
+    <string id="BetEx_00044" text="Team (Vanilla)" />
+    
+    
+<!--    Betting Menu-->
+    <string id="BetEx_00100" text="Betting Time" />
+    <string id="BetEx_00101" text="Betting Result" />
+    <string id="BetEx_00102" text="Participant" />
+    <string id="BetEx_00103" text="10 - 19 pts" />
+    <string id="BetEx_00104" text="20 - 29 pts" />
+    <string id="BetEx_00105" text="30 - 39 pts" />
+    <string id="BetEx_00106" text="40 - 49 pts" />
+    <string id="BetEx_00107" text="50 - 59 pts" />
+    <string id="BetEx_00108" text="60 - 69 pts" />
+    <string id="BetEx_00109" text="70 - 79 pts" />
+    <string id="BetEx_00110" text="80 - 89 pts" />
+    <string id="BetEx_00111" text="90 - 99 pts" />
+    <string id="BetEx_00112" text="100+ pts" />
+    
+    <string id="BetEx_00113" text="Betting Mode" />
+    <string id="BetEx_00114" text="Bet Left" />
+    <string id="BetEx_00115" text="Bet Price" />
+    <string id="BetEx_00116" text="Tax" />
+    <string id="BetEx_00117" text="Prize Pool (after tax)" />
+    <string id="BetEx_00118" text="Your Gold" />
+    <string id="BetEx_00119" text="Expected" />
+    <string id="BetEx_00120" text="You Pay" />
+    <string id="BetEx_00121" text="You Get" />
+    <string id="BetEx_00122" text="Start Match" />
+    <string id="BetEx_00123" text="Next Match" />
+    
+    <string id="BetEx_00130" text="Betting Mode is {BettingMode}. Prize Pool Split to {betWinnersCount} winner" />
+    <string id="BetEx_00131" text="Prize Pool after split : {betRewardDivided}" />
+    <string id="BetEx_00132" text="You Win Bet for {CharacterName} {participantScore} pts. Your Share : ({playerBet}/{totalBet}) X {betRewardDivided} = {betReward} Denars" />
+    <string id="BetEx_00133" text="{CharacterName}  is Winning Bet with {participantScore} pts. You don't put any bet here" />
+    <string id="BetEx_00134" text="Place your bet to any participants. Hold shift key to add / remove 5. Hold ctrl to add / remove max." />
+
+<!-- Betting Mode -->
+    <string id="BetEx_00200" text="Invalid Mode" />
+    <string id="BetEx_00201" text="All Score" />
+    <string id="BetEx_00221" text="All betting score can be claimed" />
+    <string id="BetEx_00202" text="Highest Score" />
+    <string id="BetEx_00222" text="Only highest score can be claimed. if 2 participants score is 53 and 52, only score 53 is win" />
+    <string id="BetEx_00203" text="Highest Score (Rounded)" />
+    <string id="BetEx_00223" text="Only highest score can be claimed. if 2 participants score is 53 and 52, both is win (both rounded to 50)" />
+    <string id="BetEx_00204" text="Alive Only" />
+    <string id="BetEx_00224" text="Only score from participants whom alive in the end of battle can be claimed" />
+    <string id="BetEx_00205" text="Winning Team" />
+    <string id="BetEx_00225" text="Only score from the winning team can be claimed" />
+    <string id="BetEx_00206" text="Qualified Participant" />
+    <string id="BetEx_00226" text="Only score from qualified participant can be claimed" />
+    <string id="BetEx_00207" text="Best of {Num}" />
+    <string id="BetEx_00208" text="Best of X" />
+    <string id="BetEx_00228" text="Only score from top X position can be claimed. 16 participants = top 4, 8 participants = top 3. 4 participants = top 2. 2 participants = top 1" />
+    
+    
+  </strings>
+</base>

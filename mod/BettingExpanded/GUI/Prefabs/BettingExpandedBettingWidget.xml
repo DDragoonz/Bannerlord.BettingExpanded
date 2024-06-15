@@ -1,0 +1,195 @@
+<Prefab>
+  <Constants>
+  </Constants>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" >
+<!--      <Standard.PopupCloseButton HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="940" Command.Click="Close" Parameter.ButtonText="Leave" />-->
+      <Children>
+
+        <!--Background-->
+        <Widget Id="MainContents" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="2000" SuggestedHeight="1100" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="highscore_bar_9">
+          <Children>
+<!--            Header-->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="40" Sprite="SPGeneral\SPScoreboard\reward_band" MarginTop="10" AlphaFactor="0.8">
+              <Children>
+                <TextWidget Text="@BettingTitle" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="ScoreboardDefaultFontBrush" Brush.TextHorizontalAlignment="Center"/>
+              </Children>
+            </Widget>
+            
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" MarginLeft="20" MarginRight="20" MarginTop="100" Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+
+<!--            Particpant and bet input widget-->
+<!--            <Standard.ScrollablePanel Id="ScrollablePanel" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="760" Parameter.OverlayShadowBrush="" Parameter.ScrollbarVisible="false" >-->
+<!--              <Children>-->
+              <ListPanel DataSource="{ParticipantBetList}" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" SuggestedHeight="760" VerticalAlignment="Top" MarginLeft="20" MarginRight="20" MarginTop="105" StackLayout.LayoutMethod="VerticalTopToBottom">
+                <ItemTemplate>
+                  <Widget Id="ParentWidget" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" SuggestedHeight="30" VerticalAlignment="Top" MarginBottom="5" Sprite="SPGeneral\SPScoreboard\party_bar_collapser" Color="@TeamColor"  AlphaFactor="@BackgroundAlpha" Command.HoverBegin="OnHoverBegin" Command.HoverEnd="OnHoverEnd">
+                    <Children>
+  
+                      <ButtonWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.Click="ExecuteOpenEncyclopedia">
+                        <Children>
+                          <ImageIdentifierWidget Id="CharacterImage" DataSource="{Visual}" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="40" SuggestedHeight="35" HorizontalAlignment="Left" VerticalAlignment="Center" ImageId="@Id" AdditionalArgs="@AdditionalArgs" ImageTypeCode="@ImageTypeCode" />
+                          <ScrollingTextWidget Text="@Name" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="260" SuggestedHeight="40" VerticalAlignment="Center" Brush="@ParticipantBrush" Brush.TextVerticalAlignment="Center" MarginLeft="45" Brush.FontSize="18" Brush.TextAlphaFactor="0.65"/>
+                          <TextWidget IntText="@Score" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="50" SuggestedHeight="40" HorizontalAlignment="Left" Brush="Tournament.Participant.Text" Brush.TextHorizontalAlignment="Right" MarginLeft="270"/>
+                        </Children>
+                      </ButtonWidget>
+  
+                      <ListPanel DataSource="{ParticipantBetAmount}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" VerticalAlignment="Center" MarginLeft="330" DoNotAcceptEvents="true" StackLayout.LayoutMethod="HorizontalCentered">
+                        <ItemTemplate>
+                          <ListPanel WidthSizePolicy="Fixed" SuggestedWidth="160"  HeightSizePolicy="CoverChildren" DoNotAcceptEvents="true" VerticalAlignment="Center" StackLayout.LayoutMethod="HorizontalCentered">
+                            <Children>
+  
+                              <ButtonWidget Brush="Inventory.Tuple.Extension.MinusButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" VerticalAlignment="Center" SuggestedHeight="30"  IsVisible="@CanPlaceBet" Command.Click="DecreasePlayerBet"/>
+                              
+                              <TextWidget IntText="@PlayerBetAmount" WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed"   Brush="Inventory.Tuple.Extension.StockButtonText" Brush.FontSize="20" Brush.FontColor="@BetTextColor" ClipContents="false" VerticalAlignment="Center" Brush.TextHorizontalAlignment="Center"/>
+                              <TextWidget Text="/" WidthSizePolicy="CoverChildren" SuggestedWidth="15" HeightSizePolicy="Fixed"   Brush="Inventory.Tuple.Extension.StockButtonText" Brush.FontSize="20" Brush.FontColor="@BetTextColor" ClipContents="false" VerticalAlignment="Center" Brush.TextHorizontalAlignment="Center"/>
+                              <TextWidget IntText="@NpcBetAmount" WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed"  Brush="Inventory.Tuple.Extension.StockButtonText" Brush.FontSize="20" Brush.FontColor="@BetTextColor" ClipContents="false" VerticalAlignment="Center" Brush.TextHorizontalAlignment="Center"/>
+  
+                              <ButtonWidget Brush="Inventory.Tuple.Extension.PlusButton" DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30" VerticalAlignment="Center"  IsVisible="@CanPlaceBet" Command.Click="IncreasePlayerBet"/>
+  
+                            </Children>
+                          </ListPanel>
+                        </ItemTemplate>
+                      </ListPanel>
+  
+  
+                    </Children>
+                  </Widget>
+                </ItemTemplate>
+              </ListPanel>
+<!--              </Children>-->
+<!--            </Standard.ScrollablePanel>-->
+            
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" MarginLeft="20" MarginRight="20" MarginTop="820" Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+            
+<!--            Line Divisor (Table Like Grid) -->
+            <ListPanel WidthSizePolicy="StretchToParent" MarginLeft="20" MarginRight="20" HeightSizePolicy="Fixed" VerticalAlignment="Top" MarginTop="60" SuggestedHeight="760" DoNotAcceptEvents="true">
+              <Children>
+                <TextWidget Text="@Participants" WidthSizePolicy="Fixed" SuggestedWidth="330" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5"  />
+                <TextWidget Text="@Score10" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score20" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score30" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score40" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score50" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score60" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score70" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score80" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score90" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />
+                <TextWidget Text="@Score100" WidthSizePolicy="Fixed" SuggestedWidth="158" HeightSizePolicy="CoverChildren" Brush="ScoreboardDefaultFontBrush" Brush.FontSize="22" ClipContents="false" VerticalAlignment="Top" MarginTop="0" Brush.TextHorizontalAlignment="Center"/>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" VerticalAlignment="Top" HorizontalAlignment="Center" SuggestedWidth="2"  Sprite="SPGeneral\SPScoreboard\bottom_divider" AlphaFactor="0.5" />    
+              </Children>
+            </ListPanel>
+
+<!--            Left Information Panel-->
+            <ListPanel WidthSizePolicy="Fixed" SuggestedWidth="450" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom" HorizontalAlignment="Left" MarginBottom="20" MarginLeft="40" Sprite="tournament_prize_frame_9" Color="#AD823CFF" >
+              <Children>
+
+                <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop" MarginLeft="20" MarginBottom="20" MarginTop="20" MarginRight="10">
+                  <Children>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@LocBettingMode" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@LocBetLeft" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@LocBetPrice" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@LocTax" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@LocPrize" />
+                  </Children>
+                </ListPanel>
+                <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop" MarginRight="20" MarginBottom="20" MarginTop="20">
+                  <Children>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@BettingMode" Brush.FontColor="@BettingModeColor"/>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" IntText="@BettingLeft" />
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center">
+                      <Children>
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" IntText="@BettingPrice"/>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+                      </Children>
+                    </ListPanel>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@Tax"/>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Center">
+                      <Children>
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" IntText="@PrizePool"/>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </ListPanel>
+              </Children>
+            </ListPanel>
+            
+            <Standard.ScrollablePanel  WidthSizePolicy="Fixed" SuggestedWidth="1000" HeightSizePolicy="Fixed" SuggestedHeight="245" Parameter.OverlayShadowBrush="" Parameter.ScrollbarVisible="false" MarginBottom="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Sprite="tournament_prize_frame_9" Color="#AD823CFF" >
+              <Children>
+                <Widget />
+                <ListPanel DataSource="{BettingLog}" HeightSizePolicy="CoverChildren" WidthSizePolicy="StretchToParent" StackLayout.LayoutMethod="VerticalBottomToTop">
+                  <ItemTemplate>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@Text" Brush.FontColor="@Color" Brush.TextHorizontalAlignment="Center"/>                  
+                  </ItemTemplate>
+                </ListPanel>
+              </Children>
+            </Standard.ScrollablePanel>
+
+<!--            Right Information widget-->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="450" HeightSizePolicy="CoverChildren" VerticalAlignment="Bottom" HorizontalAlignment="Right" MarginBottom="20" MarginRight="40" Sprite="tournament_prize_frame_9" Color="#AD823CFF">
+              <Children>
+
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="VerticalBottomToTop"  >
+                  <Children>
+
+                    <Widget WidthSizePolicy="StretchToParent" SuggestedWidth="300" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" MarginLeft="20" MarginRight="20" MarginTop="20" VerticalAlignment="Center">
+                      <Children>
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@YourGold" />
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" IntText="@PlayerGold" MarginRight="40"/>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" HorizontalAlignment="Right" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+                          
+                      </Children>
+                    </Widget>
+
+                    <Widget WidthSizePolicy="StretchToParent" SuggestedWidth="300" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" MarginLeft="20" MarginRight="20" MarginTop="10" VerticalAlignment="Center">
+                      <Children>
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@PayOrGetText" />
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@PayOrGetValue" MarginRight="40"/>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" HorizontalAlignment="Right" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+                          
+                      </Children>
+                    </Widget>
+
+                    <Widget WidthSizePolicy="StretchToParent" SuggestedWidth="300" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" MarginLeft="20" MarginRight="20" MarginTop="10" VerticalAlignment="Center">
+                      <Children>
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" Text="@Expected" />
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Tournament.BetWindow.Text" IntText="@TotalGold" MarginRight="40"/>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="35" SuggestedHeight="35" HorizontalAlignment="Right" VerticalAlignment="Center" Sprite="General\Icons\Coin@2x" />
+
+                      </Children>
+                    </Widget>
+
+
+                    <ButtonWidget DoNotPassEventsToChildren="true" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="64" MarginTop="10" MarginBottom="20" HorizontalAlignment="Right" VerticalAlignment="Center" Brush="Tournament.ControlButton" IsEnabled="true" UpdateChildrenStates="true" MarginLeft="20" MarginRight="20" GamepadNavigationIndex="1" Command.Click="Close">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="Tournament.ControlButton.Text" Text="@MatchButtonText" />
+                      </Children> 
+                    </ButtonWidget>
+
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+          </Children>
+        </Widget>
+
+
+        <!--Close Button-->
+<!--        <ButtonWidget Command.Click="Close" HeightSizePolicy ="Fixed" WidthSizePolicy="Fixed" SuggestedHeight="100" SuggestedWidth="100" VerticalAlignment="Top" HorizontalAlignment="Right" MarginRight="50" MarginTop="30" Brush="Popup.CloseButton"/>-->
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
