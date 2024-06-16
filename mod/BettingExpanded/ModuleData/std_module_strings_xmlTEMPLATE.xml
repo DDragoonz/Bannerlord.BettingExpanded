@@ -22,20 +22,22 @@
     <string id="BetEx_00014" text="Individual : if you have high score but your team lose, you still can go to next round" />
     <string id="BetEx_00015" text="Simple Rounds" />
     <string id="BetEx_00016" text="If true, round will divided by 16P(Participants)-4T(Teams), 8P-4T, 4P-4T, 2P-2T" />
-    <string id="BetEx_00017" text="Betting Mode" />
-    <string id="BetEx_00018" text="Betting Mode determine Betting Winner. NOT tournament winner. Mode selected each match will be random" />
+    <string id="BetEx_00017" text="Enable Betting" />
+    <string id="BetEx_00018" text="Enable / Disable Betting system" />
     <string id="BetEx_00019" text="Bonus For Ranged Kill" />
     <string id="BetEx_00020" text="Bonus +10 score for ranged kill. Note that betting odds is calculated without considering NPC ranged kill" />
     <string id="BetEx_00021" text="Minimum Ranged Kill Distance" />
     <string id="BetEx_00022" text="Minimum distance for ranged kill to gain extra +10 score" />
     <string id="BetEx_00023" text="Minimum Ranged Kill Distance (On Horse)" />
     <string id="BetEx_00024" text="Minimum distance for ranged kill while on horse back to gain extra +10 score" />
+    <string id="BetEx_00025" text="Hide result if not betting" />
+    <string id="BetEx_00026" text="Hide betting result UI if you're not betting to anyone" />
 <!--    MCM GROUP -->
     <string id="BetEx_00030" text="Debug" />
-    <string id="BetEx_00031" text="Betting Settings" />
+    <string id="BetEx_00031" text="Betting" />
     <string id="BetEx_00032" text="Match" />
     <string id="BetEx_00033" text="Mode" />
-    <string id="BetEx_00034" text="Scoring" />
+    <string id="BetEx_00034" text="Ranged Scoring" />
 <!--    MCM DROPDOWN-->
     <string id="BetEx_00040" text="Disabled" />
     <string id="BetEx_00041" text="Only if Player Participate" />

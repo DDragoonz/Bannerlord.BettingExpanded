@@ -1,48 +1,92 @@
-﻿using System;
+﻿
+using System;
+using BettingExpanded.BettingLogic;
+using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 
 namespace BettingExpanded.UI
 {
-    public class BettingExpandedBettingInputVM : ViewModel
+    public class BettingInputVM : ViewModel
     {
 
-        private static  Random _random = new Random();
-        
-        public BettingExpandedBettingInputVM()
+        public BettingInputVM(BettingData bettingData, BettingHandler bettingHandler)
         {
-            _playerBetAmount = _random.Next(0, 999);
-            _npcBetAmount = _random.Next(0, 999);
+            _bettingData = bettingData;
+            _bettingHandler = bettingHandler;
         }
         
         [DataSourceProperty]
-        public int PlayerBetAmount
+        public int PlayerBetAmount => _bettingData.GetPlayerBet();
+
+        [DataSourceProperty]
+        public int NpcBetAmount => _bettingData.GetTotalBet();
+
+        [DataSourceProperty] 
+        public bool CanPlaceBet => _bettingHandler.CanPlaceBetting();
+
+        [DataSourceProperty]
+        public Color BetTextColor
         {
-            get => _playerBetAmount;
-            set
+            get
             {
-                if (value != _playerBetAmount)
+                if (_bettingHandler.CanPlaceBetting())
                 {
-                    _playerBetAmount = value;
-                    OnPropertyChangedWithValue(value);
+                    return _bettingData.IsPlayerHasBet() ? Colors.Cyan : Colors.White;// Color.FromUint(0x8CDBB5FF) : Color.FromUint(0xF4E1C4FF);
                 }
-            }
-        }
-        
-        [DataSourceProperty]
-        public int NpcBetAmount
-        {
-            get => _npcBetAmount;
-            set
-            {
-                if (value != _npcBetAmount)
+                else
                 {
-                    _npcBetAmount = value;
-                    OnPropertyChangedWithValue(value);
+                    return _bettingData.IsBetWinner ? Colors.Yellow : Colors.Gray;
                 }
             }
         }
 
-        private int _playerBetAmount = 0;
-        private int _npcBetAmount = 0;
+        public void IncreasePlayerBet()
+        {
+            bool useFiveStackModifier = Input.IsKeyDown(InputKey.LeftShift) || Input.IsKeyDown(InputKey.RightShift);
+            bool useAllModifier = Input.IsKeyDown(InputKey.LeftControl) || Input.IsKeyDown(InputKey.RightControl);
+
+            int maxAllowedBet = _bettingHandler.BetLeft;
+            if (maxAllowedBet == 0)
+            {
+                return;
+            }
+            
+            int increaseAmount = useAllModifier ? maxAllowedBet : useFiveStackModifier ? 5 : 1;
+            increaseAmount = Math.Min(maxAllowedBet, increaseAmount);
+
+            _bettingData.AddPlayerBet(increaseAmount);
+            _bettingHandler.BetLeft -= increaseAmount;
+            _bettingHandler.OnBettingDataChanged();
+            OnPropertyChanged("PlayerBetAmount");
+            OnPropertyChanged("NpcBetAmount");
+            OnPropertyChanged("BetTextColor");
+        }
+        
+        public void DecreasePlayerBet()
+        {
+            bool useFiveStackModifier = Input.IsKeyDown(InputKey.LeftShift) || Input.IsKeyDown(InputKey.RightShift);
+            bool useAllModifier = Input.IsKeyDown(InputKey.LeftControl) || Input.IsKeyDown(InputKey.RightControl);
+
+            int currentBet = _bettingData.GetPlayerBet();
+            if (currentBet == 0)
+            {
+                return;
+            }
+            
+            int decreaseAmount = useAllModifier ? currentBet : useFiveStackModifier ? 5 : 1;
+            decreaseAmount = Math.Min(currentBet, decreaseAmount);
+
+            _bettingData.AddPlayerBet(decreaseAmount * -1);
+            _bettingHandler.BetLeft += decreaseAmount;
+            _bettingHandler.OnBettingDataChanged();
+            OnPropertyChangedWithValue(PlayerBetAmount,"PlayerBetAmount");
+            OnPropertyChangedWithValue(NpcBetAmount,"NpcBetAmount");
+            OnPropertyChangedWithValue(BetTextColor,"BetTextColor");
+        }
+        
+        
+
+        private BettingData _bettingData;
+        private BettingHandler _bettingHandler;
     }
 }
