@@ -46,7 +46,7 @@ namespace BettingExpanded.BettingLogic
 			MaxPoint = GetMaxPossibleScore(participantCount, teamCount);
 			ResetBetting();
 
-			int totalNpcBet = (int)(Settlement.CurrentSettlement != null && Settlement.CurrentSettlement.IsTown ? Settlement.CurrentSettlement.Town.Prosperity / 10 : 500); 
+			int totalNpcBet = GetTotalNpcBet(); 
 			
 			DistributeBet(totalNpcBet);
 

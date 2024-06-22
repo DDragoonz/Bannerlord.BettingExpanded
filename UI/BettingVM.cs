@@ -132,7 +132,7 @@ namespace BettingExpanded.UI
         public int PrizePool => _bettingHandler.GetPrizePoolAfterTax(out int prizePoolTax);
 
         [DataSourceProperty] 
-        public string Tax => "" + BettingExpandedSettings.Instance.PrizePoolTax + "%";
+        public string Tax => "" + (BettingExpandedSettings.Instance.PrizePoolTax * 100) + "%";
 
         [DataSourceProperty]
         public int PlayerGold => _bettingHandler.CanPlaceBetting() ? Hero.MainHero.Gold : Hero.MainHero.Gold - _bettingHandler.GetPlayerWinningPrize();
