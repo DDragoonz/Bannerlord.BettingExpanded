@@ -389,7 +389,7 @@ namespace BettingExpanded.BettingLogic
 			int maxPoint = 10;
 			int maxParticipantPerTeam = participantCount / teamCount;
 			int maxPossibleKill = (participantCount - maxParticipantPerTeam);
-			int maxScoreMultiplier = 2; // if kill by headshot
+			int maxScoreMultiplier = BettingExpandedSettings.Instance.HeadshotScoreEnabled ? 2 : 1; // if kill by headshot
 			return MathF.Min(maxPoint, maxPossibleKill * maxScoreMultiplier);
 		}
 
@@ -401,7 +401,14 @@ namespace BettingExpanded.BettingLogic
 
 		public static IReadOnlyList<float> GetPresetBetWeight(string modeString)
 		{
-			return PresetBetWeight.ContainsKey(modeString) ? PresetBetWeight[modeString] : new List<float>();
+			if (BettingExpandedSettings.Instance.HeadshotScoreEnabled)
+			{
+				return PresetBetWeight.ContainsKey(modeString) ? PresetBetWeight[modeString] : new List<float>();	
+			}
+			else
+			{
+				return presetBetWeightNoHeadshot.ContainsKey(modeString) ? presetBetWeightNoHeadshot[modeString] : new List<float>();
+			}
 		}
 
 		public static string GetModeString(BettingMode mode, int participantCount, int teamCount)
@@ -455,6 +462,59 @@ namespace BettingExpanded.BettingLogic
 			{ "mode_6#8_2", new List<float> { 0.123f, 0.393f, 0.198f, 0.162f, 0.067f, 0.036f, 0.014f, 0.008f } },
 			{ "mode_6#8_4", new List<float> { 0.087f, 0.382f, 0.22f, 0.15f, 0.101f, 0.04f, 0.014f, 0.003f, 0.002f, 0.002f } },
 			{ "mode_6#16_4", new List<float> { 0.005f, 0.183f, 0.268f, 0.231f, 0.13f, 0.101f, 0.037f, 0.032f, 0.009f, 0.003f, 0.001f } },
+		};
+		
+		public static readonly Dictionary<string, List<float>> presetBetWeightNoHeadshot = new Dictionary<string, List<float>>
+		{
+			{"mode_0#16_2", new List<float> {0.548f,0.269f,0.112f,0.047f,0.015f,0.007f,0.001f,0f}},
+			{"mode_0#16_4", new List<float> {0.496f,0.283f,0.129f,0.066f,0.021f,0.005f,0.001f,0f,0f,0f}},
+			{"mode_0#2_2", new List<float> {1f}},
+			{"mode_0#4_2", new List<float> {0.638f,0.362f}},
+			{"mode_0#4_4", new List<float> {0.524f,0.388f,0.088f}},
+			{"mode_0#8_2", new List<float> {0.55f,0.311f,0.114f,0.025f}},
+			{"mode_0#8_4", new List<float> {0.548f,0.288f,0.129f,0.03f,0.004f,0.001f}},
+			{"mode_1#16_2", new List<float> {0f,0.079f,0.478f,0.292f,0.129f,0.022f,0f,0f}},
+			{"mode_1#16_4", new List<float> {0f,0.035f,0.368f,0.361f,0.194f,0.035f,0.007f,0f,0f,0f}},
+			{"mode_1#2_2", new List<float> {1f}},
+			{"mode_1#4_2", new List<float> {0.507f,0.493f}},
+			{"mode_1#4_4", new List<float> {0.152f,0.658f,0.19f}},
+			{"mode_1#8_2", new List<float> {0.034f,0.458f,0.424f,0.085f}},
+			{"mode_1#8_4", new List<float> {0f,0.28f,0.513f,0.181f,0.026f,0f}},
+			{"mode_2#16_2", new List<float> {0f,0.216f,0.383f,0.247f,0.119f,0.035f,0f,0f}},
+			{"mode_2#16_4", new List<float> {0f,0.021f,0.46f,0.296f,0.175f,0.042f,0f,0.005f,0f,0f}},
+			{"mode_2#2_2", new List<float> {1f}},
+			{"mode_2#4_2", new List<float> {0.569f,0.431f}},
+			{"mode_2#4_4", new List<float> {0.332f,0.532f,0.136f}},
+			{"mode_2#8_2", new List<float> {0.121f,0.47f,0.309f,0.101f}},
+			{"mode_2#8_4", new List<float> {0f,0.603f,0.276f,0.103f,0.018f,0f}},
+			{"mode_3#16_2", new List<float> {0.217f,0.304f,0.226f,0.165f,0.061f,0.017f,0.009f,0f}},
+			{"mode_3#16_4", new List<float> {0.105f,0.263f,0.316f,0.171f,0.086f,0.053f,0.007f,0f,0f,0f}},
+			{"mode_3#2_2", new List<float> {1f}},
+			{"mode_3#4_2", new List<float> {0.33f,0.67f}},
+			{"mode_3#4_4", new List<float> {0.377f,0.454f,0.169f}},
+			{"mode_3#8_2", new List<float> {0.32f,0.401f,0.204f,0.075f}},
+			{"mode_3#8_4", new List<float> {0.144f,0.401f,0.307f,0.124f,0.025f,0f}},
+			{"mode_4#16_2", new List<float> {0.466f,0.307f,0.111f,0.075f,0.026f,0.013f,0.002f,0f}},
+			{"mode_4#16_4", new List<float> {0.351f,0.274f,0.197f,0.108f,0.052f,0.018f,0f,0f,0f,0f}},
+			{"mode_4#2_2", new List<float> {1f}},
+			{"mode_4#4_2", new List<float> {0.496f,0.504f}},
+			{"mode_4#4_4", new List<float> {0.328f,0.536f,0.137f}},
+			{"mode_4#8_2", new List<float> {0.494f,0.333f,0.121f,0.052f}},
+			{"mode_4#8_4", new List<float> {0.325f,0.325f,0.23f,0.109f,0.011f,0f}},
+			{"mode_5#16_2", new List<float> {0.526f,0.283f,0.121f,0.043f,0.017f,0.007f,0.003f,0.001f}},
+			{"mode_5#16_4", new List<float> {0.469f,0.307f,0.133f,0.063f,0.024f,0.004f,0f,0f,0f,0f}},
+			{"mode_5#2_2", new List<float> {1f}},
+			{"mode_5#4_2", new List<float> {0.658f,0.342f}},
+			{"mode_5#4_4", new List<float> {0.543f,0.364f,0.093f}},
+			{"mode_5#8_2", new List<float> {0.55f,0.302f,0.113f,0.035f}},
+			{"mode_5#8_4", new List<float> {0.469f,0.332f,0.143f,0.043f,0.012f,0f}},
+			{"mode_6#16_2", new List<float> {0.117f,0.505f,0.215f,0.111f,0.041f,0.008f,0.003f,0f}},
+			{"mode_6#16_4", new List<float> {0.093f,0.431f,0.287f,0.124f,0.044f,0.02f,0f,0f,0f,0f}},
+			{"mode_6#2_2", new List<float> {1f}},
+			{"mode_6#4_2", new List<float> {0.611f,0.389f}},
+			{"mode_6#4_4", new List<float> {0.541f,0.36f,0.1f}},
+			{"mode_6#8_2", new List<float> {0.407f,0.394f,0.168f,0.03f}},
+			{"mode_6#8_4", new List<float> {0.36f,0.4f,0.177f,0.046f,0.015f,0.002f}},
 		};
 
 

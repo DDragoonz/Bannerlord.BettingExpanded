@@ -21,7 +21,7 @@
     <string id="BetEx_00013" text="Qualification Mode" />
     <string id="BetEx_00014" text="Individual : if you have high score but your team lose, you still can go to next round" />
     <string id="BetEx_00015" text="Simple Rounds" />
-    <string id="BetEx_00016" text="If true, round will divided by 16P(Participants)-4T(Teams), 8P-4T, 4P-4T, 2P-2T" />
+    <string id="BetEx_00016" text="If true, round will divided by 16P(Participants)-4T(Teams), 8P-4T, 4P-4T, 2P-2T. Removing non player match" />
     <string id="BetEx_00017" text="Enable Betting" />
     <string id="BetEx_00018" text="Enable / Disable Betting system" />
     <string id="BetEx_00019" text="Bonus For Ranged Kill" />
@@ -32,12 +32,14 @@
     <string id="BetEx_00024" text="Minimum distance for ranged kill while on horse back to gain extra +10 score" />
     <string id="BetEx_00025" text="Hide result if not betting" />
     <string id="BetEx_00026" text="Hide betting result UI if you're not betting to anyone" />
+    <string id="BetEx_00027" text="Headshot Bonus" />
+    <string id="BetEx_00028" text="Enable / Disable bonus +10 score for headshot" />
 <!--    MCM GROUP -->
     <string id="BetEx_00030" text="Debug" />
     <string id="BetEx_00031" text="Betting" />
     <string id="BetEx_00032" text="Match" />
     <string id="BetEx_00033" text="Mode" />
-    <string id="BetEx_00034" text="Ranged Scoring" />
+    <string id="BetEx_00034" text="Scoring" />
 <!--    MCM DROPDOWN-->
     <string id="BetEx_00040" text="Disabled" />
     <string id="BetEx_00041" text="Only if Player Participate" />

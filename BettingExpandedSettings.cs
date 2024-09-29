@@ -80,20 +80,24 @@ namespace BettingExpanded
         [SettingPropertyGroup("{=BetEx_00032}Match" , GroupOrder = 3)]
         public Dropdown<string> QualificationMode { get; set; } = new Dropdown<string>(new string[]{"{=BetEx_00043}Individual","{=BetEx_00044}Team (Vanilla)"}, selectedIndex: 0);
         
-        [SettingPropertyBool("{=BetEx_00015}Simple Rounds", Order = 0, RequireRestart = false, HintText = "{=BetEx_00016}If true, round will divided by 16P(Participants)-4T(Teams), 8P-4T, 4P-4T, 2P-2T")]
+        [SettingPropertyBool("{=BetEx_00015}Simple Rounds", Order = 0, RequireRestart = false, HintText = "{=BetEx_00016}If true, round will divided by 16P(Participants)-4T(Teams), 8P-4T, 4P-4T, 2P-2T. Removing non player match")]
         [SettingPropertyGroup("{=BetEx_00032}Match", GroupOrder = 3)]
-        public bool UseSimpleRounds{ get; set; } = true;
+        public bool UseSimpleRounds{ get; set; } = false;
+
+        [SettingPropertyBool("{=BetEx_00027}Headshot Bonus", Order = 0, RequireRestart = false, HintText = "{=BetEx_00027}Enable / Disable bonus +10 score for headshot")]
+        [SettingPropertyGroup("{=BetEx_00034}Scoring", GroupOrder = 4)]
+        public bool HeadshotScoreEnabled { get; set; } = true;
         
-        [SettingPropertyBool("{=BetEx_00019}Bonus For Ranged Kill", Order = 0, RequireRestart = false, HintText = "{=BetEx_00020}Bonus +10 score for ranged kill. Note that betting odds is calculated without considering NPC ranged kill", IsToggle = true)]
-        [SettingPropertyGroup("{=BetEx_00034}Ranged Scoring", GroupOrder = 4)]
+        [SettingPropertyBool("{=BetEx_00019}Bonus For Ranged Kill", Order = 1, RequireRestart = false, HintText = "{=BetEx_00020}Bonus +10 score for ranged kill. Note that betting odds is calculated without considering NPC ranged kill", IsToggle = true)]
+        [SettingPropertyGroup("{=BetEx_00034}Scoring", GroupOrder = 4)]
         public bool UseRangedScoring{ get; set; } = true;
         
-        [SettingPropertyFloatingInteger("{=BetEx_00021}Minimum Ranged Kill Distance", 0f, 200f, "0.0", Order = 1, RequireRestart = false, HintText = "{=BetEx_00022}Minimum distance for ranged kill to gain extra +10 score")]
-        [SettingPropertyGroup("{=BetEx_00034}Ranged Scoring", GroupOrder = 4)]
+        [SettingPropertyFloatingInteger("{=BetEx_00021}Minimum Ranged Kill Distance", 5f, 200f, "0.0", Order = 2, RequireRestart = false, HintText = "{=BetEx_00022}Minimum distance for ranged kill to gain extra +10 score")]
+        [SettingPropertyGroup("{=BetEx_00034}Scoring", GroupOrder = 4)]
         public float MinRangedKillDistanceOnFoot{ get; set; } = 20f;
         
-        [SettingPropertyFloatingInteger("{=BetEx_00023}Minimum Ranged Kill Distance (On Horse)", 0f, 200f, "0.0", Order = 1, RequireRestart = false, HintText = "{=BetEx_00024}Minimum distance for ranged kill while on horse back to gain extra +10 score")]
-        [SettingPropertyGroup("{=BetEx_00034}Ranged Scoring", GroupOrder = 4)]
+        [SettingPropertyFloatingInteger("{=BetEx_00023}Minimum Ranged Kill Distance (On Horse)", 5f, 200f, "0.0", Order = 2, RequireRestart = false, HintText = "{=BetEx_00024}Minimum distance for ranged kill while on horse back to gain extra +10 score")]
+        [SettingPropertyGroup("{=BetEx_00034}Scoring", GroupOrder = 4)]
         public float MinRangedKillDistanceOnHorse{ get; set; } = 10f;
 
         public List<BettingMode> GetBettingMode(bool isPlayerParticipating)

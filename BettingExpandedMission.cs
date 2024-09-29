@@ -41,7 +41,7 @@ namespace BettingExpanded
                 TournamentParticipant killer = _tournamentBehavior.CurrentMatch.Participants.First(x => x.Character == affectorAgent.Character);
                 killer.AddScore(10);
 
-                if (blow.IsHeadShot())
+                if (BettingExpandedSettings.Instance.HeadshotScoreEnabled && blow.IsHeadShot())
                 {
                     killer.AddScore(10);
                 }
@@ -60,12 +60,11 @@ namespace BettingExpanded
                     }    
                 }
                 
-
                 if (BettingExpandedSettings.Instance.EnableDebug)
                 {
                     InformationManager.DisplayMessage(new InformationMessage(affectedAgent.Character.Name + " defeated by "+affectorAgent.Character.Name));
                     if (BettingExpandedSettings.Instance.UseRangedScoring) InformationManager.DisplayMessage(new InformationMessage("distance : "+distance +" / "+minimumDistance));
-                    InformationManager.DisplayMessage(new InformationMessage("headshot : "+blow.IsHeadShot()));
+                    if (BettingExpandedSettings.Instance.HeadshotScoreEnabled) InformationManager.DisplayMessage(new InformationMessage("headshot : "+blow.IsHeadShot()));
                     InformationManager.DisplayMessage(new InformationMessage("killer is mounted : "+(affectorAgent.MountAgent != null)));    
                 }
                 
