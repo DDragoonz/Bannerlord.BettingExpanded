@@ -1,5 +1,5 @@
 <Module>
-     <Name value="Betting Expanded"/>
+     <Name value="Betting Expanded Shokuho"/>
      <Id value="BettingExpanded"/>
      <Version value="v1.1.2"/>
      <SingleplayerModule value="true"/>
@@ -12,6 +12,7 @@
          <DependedModule Id="StoryMode" />
          <DependedModule Id="Bannerlord.Harmony"/>
          <DependedModule Id="Bannerlord.MBOptionScreen"/>
+         <DependedModule Id="Shokuho"/>
      </DependedModules>
      <SubModules>
          <SubModule>

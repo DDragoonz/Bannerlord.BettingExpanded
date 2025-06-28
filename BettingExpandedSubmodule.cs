@@ -1,6 +1,6 @@
 ﻿using BettingExpanded.UI;
 using HarmonyLib;
-using SandBox.Tournaments.MissionLogics;
+using Shokuho.CustomCampaign.Tournaments;
 using TaleWorlds.MountAndBlade;
 
 namespace BettingExpanded
@@ -17,7 +17,7 @@ namespace BettingExpanded
         public override void OnBeforeMissionBehaviorInitialize(Mission mission)
         {
             base.OnBeforeMissionBehaviorInitialize(mission);
-            if (mission.HasMissionBehavior<TournamentBehavior>())
+            if (mission.HasMissionBehavior<ShokuhoTournamentBehavior>())
             {
                 mission.AddMissionBehavior(new BettingExpandedMission());
                 if (BettingExpandedSettings.Instance.BettingModeToggle)

@@ -1,16 +1,16 @@
 ﻿using System.Linq;
 using HarmonyLib;
-using SandBox.Tournaments.MissionLogics;
+using Shokuho.CustomCampaign.Tournaments;
 using TaleWorlds.CampaignSystem.TournamentGames;
 
 namespace BettingExpanded
 {
 
-    [HarmonyPatch(typeof(TournamentBehavior))]
+    [HarmonyPatch(typeof(ShokuhoTournamentBehavior))]
     [HarmonyPatch("CreateTournamentTree")]
     class TournamentBehaviorCreateTournamentTreePatch
     {
-        static void Postfix(TournamentBehavior __instance)
+        static void Postfix(ShokuhoTournamentBehavior __instance)
         {
 
             TournamentGame.QualificationMode qualificationMode = (TournamentGame.QualificationMode)BettingExpandedSettings.Instance.QualificationMode.SelectedIndex;

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
-using BettingExpanded.BettingLogic;
-using SandBox.Tournaments.MissionLogics;
+﻿using BettingExpanded.BettingLogic;
+using Shokuho.CustomCampaign.Tournaments;
 using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
@@ -25,7 +23,7 @@ namespace BettingExpanded.UI
         public override void AfterStart()
         {
             base.AfterStart();
-            _tournamentBehavior = Mission.GetMissionBehavior<TournamentBehavior>();
+            _tournamentBehavior = Mission.GetMissionBehavior<ShokuhoTournamentBehavior>();
             _lastMatchState = _tournamentBehavior.CurrentMatch.State;
             _bettingHandler = new BettingHandler(_tournamentBehavior.CurrentMatch);
             _dataSource = new BettingVM(this);
@@ -134,7 +132,7 @@ namespace BettingExpanded.UI
         }
         
         
-        private TournamentBehavior _tournamentBehavior;
+        private ShokuhoTournamentBehavior _tournamentBehavior;
         private BettingHandler _bettingHandler;
         private TournamentMatch.MatchState _lastMatchState;
         private BettingVM _dataSource;

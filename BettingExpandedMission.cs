@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using SandBox.Tournaments.MissionLogics;
+using Shokuho.CustomCampaign.Tournaments;
 using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -9,12 +9,12 @@ namespace BettingExpanded
 {
  public class BettingExpandedMission : MissionLogic
     {
-        private TournamentBehavior _tournamentBehavior;
+        private ShokuhoTournamentBehavior _tournamentBehavior;
 
         public override void AfterStart()
         {
             base.AfterStart();
-            _tournamentBehavior = Mission.GetMissionBehavior<TournamentBehavior>();
+            _tournamentBehavior = Mission.GetMissionBehavior<ShokuhoTournamentBehavior>();
         }
 
         public override void OnAgentRemoved(

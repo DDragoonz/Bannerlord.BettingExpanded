@@ -9,7 +9,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>BettingExpanded</RootNamespace>
         <AssemblyName>BettingExpanded</AssemblyName>
-        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -78,6 +78,10 @@
         <Reference Include="SandBox.ViewModelCollection">
             <Private>false</Private>
             <HintPath>..\..\Steam Games\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.ViewModelCollection.dll</HintPath>
+        </Reference>
+        <Reference Include="Shokuho">
+            <Private>false</Private>
+            <HintPath>..\..\Steam Games\steamapps\workshop\content\261550\3496296180\bin\Win64_Shipping_Client\Shokuho.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />

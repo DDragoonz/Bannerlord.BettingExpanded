@@ -12,7 +12,7 @@ namespace BettingExpanded
     public class BettingExpandedSettings : AttributeGlobalSettings<BettingExpandedSettings>
     {
         public override string Id => "BettingExpanded";
-        public override string DisplayName => "Betting Expanded";
+        public override string DisplayName => "Betting Expanded Shokuho";
         public override string FolderName => "BettingExpanded";
         public override string FormatType => "json2";
         
