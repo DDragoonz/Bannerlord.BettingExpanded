@@ -31,6 +31,10 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+    <PropertyGroup>
+        <!-- Build output goes directly into your Bannerlord module folder -->
+        <OutputPath>$(SolutionDir)\mod\BettingExpanded\bin\Win64_Shipping_Client\</OutputPath>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Bannerlord.MCM" Version="5.0.0" IncludeAssets="compile" />
     </ItemGroup>

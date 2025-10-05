@@ -4,6 +4,7 @@ using SandBox.ViewModelCollection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Core;
+using TaleWorlds.Core.ViewModelCollection.ImageIdentifiers;
 using TaleWorlds.Library;
 
 namespace BettingExpanded.UI
@@ -43,7 +44,7 @@ namespace BettingExpanded.UI
 	        {
 		        Name = participant.Character.Name.ToString();
 		        CharacterCode characterCode = SandBoxUIHelper.GetCharacterCode(participant.Character, false);
-		        Visual = new ImageIdentifierVM(characterCode);
+		        Visual = new CharacterImageIdentifierVM(characterCode);
 		        IsValid = true;
 	        }
         }

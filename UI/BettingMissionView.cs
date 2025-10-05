@@ -139,7 +139,7 @@ namespace BettingExpanded.UI
         private TournamentMatch.MatchState _lastMatchState;
         private BettingVM _dataSource;
         private GauntletLayer _gauntletLayer;
-        private IGauntletMovie _movie;
+        private GauntletMovieIdentifier _movie;
         private bool _isActive;
     }
 }

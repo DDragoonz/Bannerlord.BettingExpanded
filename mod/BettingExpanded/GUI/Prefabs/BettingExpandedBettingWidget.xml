@@ -28,7 +28,7 @@
   
                       <ButtonWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Command.Click="ExecuteOpenEncyclopedia">
                         <Children>
-                          <ImageIdentifierWidget Id="CharacterImage" DataSource="{Visual}" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="40" SuggestedHeight="35" HorizontalAlignment="Left" VerticalAlignment="Center" ImageId="@Id" AdditionalArgs="@AdditionalArgs" ImageTypeCode="@ImageTypeCode" />
+                          <ImageIdentifierWidget Id="CharacterImage" DataSource="{Visual}" WidthSizePolicy = "Fixed" HeightSizePolicy = "Fixed" SuggestedWidth="40" SuggestedHeight="35" HorizontalAlignment="Left" VerticalAlignment="Center" ImageId="@Id" AdditionalArgs="@AdditionalArgs" TextureProviderName="@TextureProviderName" />
                           <ScrollingTextWidget Text="@Name" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="260" SuggestedHeight="40" VerticalAlignment="Center" Brush="@ParticipantBrush" Brush.TextVerticalAlignment="Center" MarginLeft="45" Brush.FontSize="18" Brush.TextAlphaFactor="0.65"/>
                           <TextWidget IntText="@Score" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="50" SuggestedHeight="40" HorizontalAlignment="Left" Brush="Tournament.Participant.Text" Brush.TextHorizontalAlignment="Right" MarginLeft="270"/>
                         </Children>
