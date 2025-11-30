@@ -110,7 +110,7 @@ namespace BettingExpanded.UI
                 
                 MBCommon.PauseGameEngine();
                 Game.Current.GameStateManager.RegisterActiveStateDisableRequest(this);
-                _gauntletLayer = new GauntletLayer(ViewOrderPriority);
+                _gauntletLayer = new GauntletLayer("BettingMenu", ViewOrderPriority);
                 _gauntletLayer.Input.RegisterHotKeyCategory(HotKeyManager.GetCategory("GenericPanelGameKeyCategory"));
                 _gauntletLayer.InputRestrictions.SetInputRestrictions(true, InputUsageMask.All);
                 _movie = _gauntletLayer.LoadMovie("BettingExpandedBettingWidget", _dataSource);

@@ -420,7 +420,7 @@ namespace BettingExpanded.BettingLogic
 		// pre generated bet weight
 		private static readonly Dictionary<string, IReadOnlyList<float>> PresetBetWeight = new Dictionary<string, IReadOnlyList<float>>
 		{
-			{ "mode_0#2_2", new List<float> { 0.79f, 0.21f } },
+			{ "mode_0#2_2", new List<float> { 0.52f, 0.48f } },
 			{ "mode_0#4_2", new List<float> { 0.31f, 0.462f, 0.158f, 0.071f } },
 			{ "mode_0#4_4", new List<float> { 0.324f, 0.357f, 0.179f, 0.118f, 0.023f, 0f } },
 			{ "mode_0#8_2", new List<float> { 0.3f, 0.345f, 0.16f, 0.122f, 0.047f, 0.016f, 0.004f, 0.006f } },

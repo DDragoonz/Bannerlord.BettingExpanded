@@ -17,7 +17,7 @@ namespace BettingExpanded
         public override string FormatType => "json2";
         
         [SettingPropertyBool("{=BetEx_00001}Enable Debug", Order = 0, RequireRestart = false, HintText = "{=BetEx_00002}Show debug Message")]
-        [SettingPropertyGroup("{=BetEx_00030}Debug", GroupOrder = 0)]
+        [SettingPropertyGroup("{=BetEx_00030}Debug", GroupOrder = 10)]
         public bool EnableDebug{ get; set; } = false;
         
         [SettingPropertyBool("{=BetEx_00017}Enable Betting", Order = 0, RequireRestart = false, HintText = "{=BetEx_00018}Enable / Disable Betting system", IsToggle = true)]
@@ -30,15 +30,15 @@ namespace BettingExpanded
         
         [SettingPropertyInteger("{=BetEx_00005}Max Bet", 1, 100, "0",Order = 1, RequireRestart = false, HintText = "{=BetEx_00006}Max Betting Allowed (double if having Deep Pocket Perk)")]
         [SettingPropertyGroup("{=BetEx_00031}Betting", GroupOrder = 1)]
-        public int MaxBet{ get; set; } = 20;
+        public int MaxBet{ get; set; } = 10;
         
         [SettingPropertyFloatingInteger("{=BetEx_00007}Prize Pool Tax", 0f, 1f, "#0%", Order = 1, RequireRestart = false, HintText = "{=BetEx_00008}Percentage of prize pool will be cut to this amount before split to betting winner")]
         [SettingPropertyGroup("{=BetEx_00031}Betting", GroupOrder = 1)]
-        public float PrizePoolTax{ get; set; } = 0.01f;  
+        public float PrizePoolTax{ get; set; } = 0.1f;
         
         [SettingPropertyFloatingInteger("{=BetEx_00009}Settlement Prosperity to NPC Betting Ratio", 0.01f, 1f, "#0%", Order = 1, RequireRestart = false, HintText = "{=BetEx_00010}Percentage of settlement prosperity will be converted as purchased bet from NPC. example : 5000 prosperity with 10% setting resulting in 500 total bet")]
         [SettingPropertyGroup("{=BetEx_00031}Betting", GroupOrder = 1)]
-        public float MaxNpcBetRatio{ get; set; } = 0.1f;  
+        public float MaxNpcBetRatio{ get; set; } = 0.5f;  
         
         [SettingPropertyBool("{=BetEx_00011}Give Prize Tax to Settlement", Order = 0, RequireRestart = false, HintText = "{=BetEx_00012}Should tax from total prize pool be added to settlement gold?")]
         [SettingPropertyGroup("{=BetEx_00031}Betting", GroupOrder = 1)]
@@ -46,35 +46,35 @@ namespace BettingExpanded
         
         [SettingPropertyBool("{=BetEx_00025}Hide result if not betting", Order = 0, RequireRestart = false, HintText = "{=BetEx_00026}Hide betting result UI if you're not betting to anyone")]
         [SettingPropertyGroup("{=BetEx_00031}Betting", GroupOrder = 1)]
-        public bool HideResultIfNotBetting{ get; set; } = false;
+        public bool HideResultIfNotBetting{ get; set; } = true;
 
         [SettingPropertyDropdown("{=BetEx_00201}All Score", Order = 0, RequireRestart = false, HintText = "{=BetEx_00221}All betting score can be claimed")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
         public Dropdown<string> AllScore { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
         
         [SettingPropertyDropdown("{=BetEx_00202}Highest Score", Order = 1, RequireRestart = false, HintText = "{=BetEx_00222}Only highest score can be claimed. if 2 participants score is 53 and 52, only score 53 is win")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
-        public Dropdown<string> HighestScore { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 0);
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
+        public Dropdown<string> HighestScore { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
         
         [SettingPropertyDropdown("{=BetEx_00203}Highest Score (Rounded)", Order = 1, RequireRestart = false, HintText = "{=BetEx_00223}Only highest score can be claimed. if 2 participants score is 53 and 52, both is win (both rounded to 50)")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
-        public Dropdown<string> HighestScoreRounded { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 0);
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
+        public Dropdown<string> HighestScoreRounded { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
         
         [SettingPropertyDropdown("{=BetEx_00204}Alive Only", Order = 1, RequireRestart = false, HintText = "{=BetEx_00224}Only score from participants whom alive in the end of battle can be claimed")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
-        public Dropdown<string> AliveOnly { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 0);
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
+        public Dropdown<string> AliveOnly { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
         
         [SettingPropertyDropdown("{=BetEx_00205}Winning Team", Order = 1, RequireRestart = false, HintText = "{=BetEx_00225}Only score from the winning team can be claimed")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
-        public Dropdown<string> TeamWinner { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 0);
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
+        public Dropdown<string> TeamWinner { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
         
         [SettingPropertyDropdown("{=BetEx_00206}Qualified Participant", Order = 1, RequireRestart = false, HintText = "{=BetEx_00226}Only score from qualified participant can be claimed")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
-        public Dropdown<string> Qualified { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 0);
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
+        public Dropdown<string> Qualified { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
         
         [SettingPropertyDropdown("{=BetEx_00208}Best of X", Order = 1, RequireRestart = false, HintText = "{=BetEx_00228}Only score from top X position can be claimed. 16 participants = top 4, 8 participants = top 3. 4 participants = top 2. 2 participants = top 1")]
-        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 2)]
-        public Dropdown<string> BestOf { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 0);
+        [SettingPropertyGroup("{=BetEx_00031}Betting/{=BetEx_00033}Mode" , GroupOrder = 1)]
+        public Dropdown<string> BestOf { get; set; } = new Dropdown<string>(BettingModeRuleString, selectedIndex: 2);
 
         [SettingPropertyDropdown("{=BetEx_00013}Qualification Mode", Order = 0, RequireRestart = false, HintText = "{=BetEx_00014}Individual : if you have high score but your team lose, you still can go to next round")]
         [SettingPropertyGroup("{=BetEx_00032}Match" , GroupOrder = 3)]
